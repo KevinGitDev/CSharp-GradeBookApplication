@@ -34,9 +34,41 @@ namespace GradeBook.GradeBooks
                 return 'D';
             else
                 return 'F';
+        }
 
+        public override void CalculateStatistics()
+        {
+            //Create an override for the CalculateStatistics method in the RankedGradeBook class.
+            //If there are less than 5 students write "Ranked grading requires at least 5 students with grades in order to properly calculate a student's overall grade." to the Console, then return from the method.
+            //In there were 5 or more students continue call the base class' method using base.CalculateStatistics();
 
+            if (Students.Count < 5)
+            {
+                Console.WriteLine("Ranked grading requires at least 5 students with grades in order to properly calculate a student's overall grade.");
+                return;
+            }
+            else
+            {
+                base.CalculateStatistics();
+            }
+        }
 
+        public override void CalculateStudentStatistics(string name)
+        {
+            //Create an override for CalculateStudentStatistics in the RankedGradeBook class.
+            //If there are less than 5 students with grades in the class write "Ranked grading requires at least 5 students with grades in order 
+            //to properly calculate a student's overall grade." to console than escape the method.
+            //If there were at least 5 students then call the unoverriden method using base.CalculateStudentStatistics();.
+
+            if (Students.Count < 5)
+            {
+                Console.WriteLine("Ranked grading requires at least 5 students with grades in order to properly calculate a student's overall grade.");
+                return;
+            }
+            else
+            {
+                base.CalculateStudentStatistics(name);
+            }
         }
     }
 }
